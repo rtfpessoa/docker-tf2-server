@@ -1,10 +1,12 @@
-FROM ubuntu:12.04
-MAINTAINER Max Gonzih <gonzih at gmail dot com>
+FROM ubuntu:14.04
+MAINTAINER Rodrigo Fernandes <rtfrodrigo at gmail dot com>
 
-RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN apt-get -y install lib32gcc1 lib32z1 lib32ncurses5 lib32bz2-1.0 lib32asound2 curl
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN \
+  apt-get -y update && \
+  apt-get -y upgrade && \
+  apt-get -y install lib32gcc1 lib32z1 lib32ncurses5 lib32bz2-1.0 curl && \
+  apt-get -y clean && apt-get -y autoclean && apt-get -y autoremove && \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV USER tf2
 
